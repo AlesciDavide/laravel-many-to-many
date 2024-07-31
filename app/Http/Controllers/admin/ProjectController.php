@@ -6,6 +6,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\Technology;
 use App\Models\type;
 
 class ProjectController extends Controller
@@ -26,7 +27,8 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::all();
-        return view('admin.project.create', compact('types'));
+        $technologies = Technology::all();
+        return view('admin.project.create', compact('types', 'technologies'));
     }
 
     /**
@@ -37,8 +39,11 @@ class ProjectController extends Controller
         $data = $request->except('_token');
         $data = $request->validated();
 
+
         $newProject = new Project($data);
+
         $newProject->save();
+        $newProject->technologies()->sync($data['technologies']);
 
         return redirect()->route('admin.project.show', ['project' => $newProject->id])->with('message_nuovo_progetto', $newProject->nome . " è stato Creato con successo!!");
     }
@@ -60,8 +65,10 @@ class ProjectController extends Controller
     {
 
         $types = Type::all();
+        $technologies = Technology::all();
 
-        return view('admin.project.edit', compact('project', 'types'));
+
+        return view('admin.project.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -72,6 +79,8 @@ class ProjectController extends Controller
         $data = $request->except('_token');
         $data = $request->validated();
         $project->update($data);
+        $project->technologies()->sync($data['technologies']);
+
 
         return redirect()->route('admin.project.show', ['project' => $project->id])->with('message_update_progetto', $project->nome . " è stato aggiornato con successo!!");
     }
@@ -109,6 +118,7 @@ class ProjectController extends Controller
     public function delete(string $id)
     {
         $projects = Project::onlyTrashed()->findOrFail($id);
+        $projects->technologies()->detach();
         $projects->forceDelete();
         return redirect()->route('admin.project.deleteindex')->with('message_delete', $projects->nome . " è stato cancellato permanentemente con successo!!");
     }

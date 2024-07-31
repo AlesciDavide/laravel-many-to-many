@@ -19,8 +19,8 @@
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Nome Progetto</th>
-                        <th scope="col">Linguaggio Utilizzato</th>
                         <th scope="col">Tipo di progetto</th>
+                        <th scope="col">Tecnologia utilizzata</th>
                         <th scope="col">link della repository</th>
                         <th scope="col">Azioni</th>
                     </tr>
@@ -31,8 +31,24 @@
                     <tr>
                         <th scope="row">{{ $singleproject->id}}</th>
                         <td>{{ $singleproject->nome}}</td>
-                        <td>{{ $singleproject->linguaggio_utilizzato}}</td>
-                            <td>{{ $singleproject->type->nome}}</td>
+                        <td>
+                            @forelse ($singleproject->Technologies as $technology)
+                            <span class="badge text" style="background-color: {{ $technology->colore }}">
+
+                                {{ $technology->nome}}
+                            </span>
+                            @empty
+                            Nessuna tecnologia impostata
+                            @endforelse
+                        </td>
+                        @if ($singleproject->type->nome == null)
+                            <td>Tipo di progetto non presente</td>
+                        @else
+                        <td>{{ $singleproject->type->nome}}</td>
+
+                        @endif
+
+
                         <td><a href=" {{ $singleproject->url_repo}}">Clicca qui per vedere la repository</a></td>
                         <td>
                             <div class="d-flex ">

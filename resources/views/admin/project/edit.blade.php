@@ -24,8 +24,6 @@
                     <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Nome progetto" id="nome" name="nome" value="{{ old('nome', $project->nome) }}">
 
 
-                    <label for="linguaggio_utilizzato">linguaggio_utilizzato</label>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="linguaggio_utilizzato" id="linguaggio_utilizzato" name="linguaggio_utilizzato" value="{{ old('linguaggio_utilizzato', $project->linguaggio_utilizzato) }}">
 
                     <label for="type_id">Tipo di progetto</label>
 
@@ -38,6 +36,27 @@
                         @endforeach
                     </select>
 
+                    <label for="technology_id">Linguaggio utilizzato</label>
+                        <div class="customCheckBoxHolder d-flex flex-wrap ">
+                            @foreach ($technologies as $technology)
+                            @if ($errors->any())
+                            <input name="technologies[]" type="checkbox" class="customCheckBoxInput" id="technology-check-{{$technology->id}}" autocomplete="off" value="{{$technology->id}}"
+                            {{ in_array($technology->id, old('technologies', [])) ? "checked" : ""}}
+                            >
+                            @else
+                            <input name="technologies[]" type="checkbox" class="customCheckBoxInput" id="technology-check-{{$technology->id}}" autocomplete="off" value="{{$technology->id}}"
+                            {{ $project->technologies->contains($technology) ? "checked" : ""}}
+                            >
+                            @endif
+
+                            <label class="customCheckBoxWrapper m-1" for="technology-check-{{$technology->id}}" style="--dynamic-color: {{ $technology->colore }}">
+                                <div class="customCheckBox">
+                                    <div class="inner">{{$technology->nome}}</div>
+                                </div>
+                            </label>
+
+                            @endforeach
+                    </div>
                     <label for="url_repo">url_repo</label>
                     <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="url_repo" id="url_repo" name="url_repo" value="{{ old('url_repo', $project->url_repo) }}">
 

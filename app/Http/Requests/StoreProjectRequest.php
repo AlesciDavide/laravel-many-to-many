@@ -23,9 +23,10 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             'nome' => ['required', 'min:2', 'max:254'],
-            'linguaggio_utilizzato' => ['required', 'min:1', 'max:254'],
             'url_repo' => ['url'],
             'type_id' => ['required', 'exists:types,id'],
+            'technologies' => ['required', 'array', 'exists:technologies,id'],
+
         ];
     }
     /* messaggi di errore */
@@ -33,7 +34,6 @@ class StoreProjectRequest extends FormRequest
 
         return [
         'nome' => 'Devi inserire un nome valido!',
-        'linguaggio_utilizzato' => 'Devi inserire un linguaggio valido tra 1 e 250 caratteri!',
         'url_repo.url' => 'Devi inserire un url valido!',
         ];
 
