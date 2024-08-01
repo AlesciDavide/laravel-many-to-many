@@ -65,7 +65,7 @@
 
                     </tbody>
                 </table>
-                <div class="border border-dark">
+                <div class="border border-dark d-flex justify-content-center">
 
                     <img class="img-fluid" src="{{ asset('storage/' . $project->img) }}" alt="">
                 </div>
