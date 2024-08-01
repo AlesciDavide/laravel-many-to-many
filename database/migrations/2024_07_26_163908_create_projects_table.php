@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome', 255);
             $table->string('url_repo')->nullable();
+            $table->string('img')->nullable();
             $table->timestamps();
 
         });

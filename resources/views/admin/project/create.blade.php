@@ -14,18 +14,18 @@
     @endif
 
         <div class="col-12">
-            <form action="{{ route('admin.project.store') }}" method="POST" id="creation_form">
+            <form action="{{ route('admin.project.store') }}" method="POST" id="creation_form" enctype="multipart/form-data">
                 @csrf
 
                 <div class="input-group-sm container mb-5 w-50">
 
                     <label for="nome">Nome</label>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Nome progetto" id="nome" name="nome" value="{{ old('nome') }}">
+                    <input type="text" class="form-control mb-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Nome progetto" id="nome" name="nome" value="{{ old('nome') }}">
 
 
                     <label for="type_id">Tipo di progetto</label>
 
-                    <select class="form-select form-select-sm" aria-label="Tipo di progetto" id="type_id" name="type_id">
+                    <select class="form-select form-select-sm mb-2" aria-label="Tipo di progetto" id="type_id" name="type_id">
                         @foreach ($types as $type)
 
                         <option value="{{$type->id}}">{{$type->nome}}</option>
@@ -49,11 +49,14 @@
                     </div>
 
                     <label for="url_repo">url_repo</label>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="url_repo" id="url_repo" name="url_repo" value="{{ old('url_repo') }}">
+                    <input type="text" class="form-control mb-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="url_repo" id="url_repo" name="url_repo" value="{{ old('url_repo') }}">
 
+                    <div>
+                        <label for="img" class="form-label">Inserisci un'immagine del progetto</label>
+                        <input class="form-control mb-3" type="file" id="img" name="img">
+                    </div>
 
-
-                    <div class="d-flex justify-content-between mt-3">
+                    <div class="d-flex justify-content-between ">
 
                             <input class="btn btn-primary" type="submit" value="crea un nuovo progetto">
                             <input class="btn btn-warning" type="reset" value="resetta campi">

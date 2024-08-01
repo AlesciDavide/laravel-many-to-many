@@ -25,6 +25,7 @@ class StoreProjectRequest extends FormRequest
             'nome' => ['required', 'min:2', 'max:254'],
             'url_repo' => ['url'],
             'type_id' => ['required', 'exists:types,id'],
+            'img' => ['image'],
             'technologies' => ['required', 'array', 'exists:technologies,id'],
 
         ];

@@ -17,6 +17,7 @@ class Project extends Model
         'type_id',
         'nome',
         'url_repo',
+        'img',
     ];
 
     public function type(){

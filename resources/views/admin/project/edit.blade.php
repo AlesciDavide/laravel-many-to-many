@@ -14,7 +14,7 @@
     @endif
 
         <div class="col-12">
-            <form action="{{ route('admin.project.update', ['project' => $project->id]) }}" method="POST" id="creation_form">
+            <form action="{{ route('admin.project.update', ['project' => $project->id]) }}" method="POST" id="creation_form" enctype="multipart/form-data">
                 @method("PUT")
                 @csrf
 
@@ -60,7 +60,10 @@
                     <label for="url_repo">url_repo</label>
                     <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="url_repo" id="url_repo" name="url_repo" value="{{ old('url_repo', $project->url_repo) }}">
 
-
+                    <div>
+                        <label for="img" class="form-label">Inserisci un'immagine del progetto</label>
+                        <input class="form-control mb-3" type="file" id="img" name="img">
+                    </div>
 
                     <div class="d-flex justify-content-between mt-3">
 
