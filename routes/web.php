@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\admin\ProjectController as ProjectController;
 use App\Http\Controllers\HomeController as GuestHomeController;
+use App\Http\Controllers\admin\TechnologyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +31,7 @@ route::middleware('auth')->name('admin.')->prefix('admin/')->group(
         Route::patch('project/{project}/restore', [ProjectController::class, 'restore'])->name('project.restore');
         Route::delete('project/{project}/delete', [ProjectController::class, 'delete'])->name('project.permanent_delete');
         Route::resource('project', ProjectController::class);
-
+        Route::get('technologies', [TechnologyController::class, 'index'])->name('technologies.index');
     }
 );
 

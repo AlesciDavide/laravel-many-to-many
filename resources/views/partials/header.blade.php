@@ -28,6 +28,9 @@
                 <li>
                     <a class="nav-link" aria-current="page" href="{{ route('admin.project.create')}}">Crea nuovo progetto</a>
                 </li>
+                <li>
+                    <a class="nav-link" aria-current="page" href="{{ route('admin.technologies.index')}}">lista linguaggi</a>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->

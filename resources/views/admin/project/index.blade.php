@@ -19,8 +19,8 @@
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Nome Progetto</th>
-                        <th scope="col">Tipo di progetto</th>
                         <th scope="col">Tecnologia utilizzata</th>
+                        <th scope="col">Tipo di progetto</th>
                         <th scope="col">link della repository</th>
                         <th scope="col">Azioni</th>
                     </tr>

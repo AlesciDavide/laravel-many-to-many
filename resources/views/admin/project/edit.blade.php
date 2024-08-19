@@ -62,7 +62,11 @@
 
                     <div>
                         <label for="img" class="form-label">Inserisci un'immagine del progetto</label>
-                        <input class="form-control mb-3" type="file" id="img" name="img">
+                        <input class="form-control mb-3" type="file" id="img" name="img" >
+                    </div>
+                    <div class="border border-dark d-flex justify-content-center w-30">
+
+                        <img class="img-fluid" src="{{ asset('storage/' . $project->img) }}" alt="">
                     </div>
 
                     <div class="d-flex justify-content-between mt-3">
