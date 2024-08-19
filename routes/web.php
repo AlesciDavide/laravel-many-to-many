@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\CreatorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\admin\ProjectController as ProjectController;
@@ -32,6 +33,7 @@ route::middleware('auth')->name('admin.')->prefix('admin/')->group(
         Route::delete('project/{project}/delete', [ProjectController::class, 'delete'])->name('project.permanent_delete');
         Route::resource('project', ProjectController::class);
         Route::get('technologies', [TechnologyController::class, 'index'])->name('technologies.index');
+        Route::get('creator', [CreatorController::class, 'index'])->name('creators.index');
     }
 );
 

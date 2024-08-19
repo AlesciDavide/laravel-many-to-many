@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Requests\StoreProjectRequest;
 
 use App\Http\Controllers\Controller;
+use App\Models\Creator;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Technology;
@@ -28,6 +29,7 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::all();
+        $creators = Creator::all();
         $technologies = Technology::all();
         return view('admin.project.create', compact('types', 'technologies'));
     }

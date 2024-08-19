@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Creator;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Project;
@@ -144,9 +145,12 @@ class ProjectSeeder extends Seeder
 
         ];
         $types = type::all()->pluck("id");
+        $creators = Creator::all()->pluck("id");
+
         foreach ($projectList as $singleProject) {
             $newProject = new Project();
             $newProject->type_id = $faker->randomElement($types);
+            $newProject->creator_id = $faker->randomElement($creators);
             $newProject->nome = $singleProject["nome"];
             $newProject->url_repo = $singleProject["url_repo"];
             $newProject->save();

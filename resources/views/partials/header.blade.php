@@ -11,11 +11,6 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
                 <li>
-                    <a class="nav-link" href="/home">
-                    Homepage</a>
-
-                </li>
-                <li>
                     <a class="nav-link" href="{{ route('admin.project.index')}}"  aria-current="page">
                         Lista progetti
                     </a>
@@ -29,7 +24,10 @@
                     <a class="nav-link" aria-current="page" href="{{ route('admin.project.create')}}">Crea nuovo progetto</a>
                 </li>
                 <li>
-                    <a class="nav-link" aria-current="page" href="{{ route('admin.technologies.index')}}">lista linguaggi</a>
+                    <a class="nav-link mx-5" aria-current="page" href="{{ route('admin.technologies.index')}}">Lista linguaggi</a>
+                </li>
+                <li>
+                    <a class="nav-link" aria-current="page" href="{{ route('admin.creators.index')}}">Lista creatori</a>
                 </li>
             </ul>
 

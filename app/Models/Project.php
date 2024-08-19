@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Type;
+use App\Models\Creator;
 
 
 class Project extends Model
@@ -15,6 +16,7 @@ class Project extends Model
 
     protected $fillable = [
         'type_id',
+        'creator_id',
         'nome',
         'url_repo',
         'img',
@@ -22,6 +24,10 @@ class Project extends Model
 
     public function type(){
         return $this->belongsTo(Type::class);
+    }
+
+    public function Creator(){
+        return $this->belongsTo(Creator::class);
     }
 
     public function technologies(){
